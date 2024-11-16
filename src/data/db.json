@@ -5,7 +5,7 @@
       "name": "Produit A",
       "price": 50,
       "quantity": 500,
-      "checked": false
+      "checked": true
     },
     {
       "id": "2",
@@ -47,7 +47,7 @@
       "name": "Produit G",
       "price": 110,
       "quantity": 22,
-      "checked": true
+      "checked": false
     },
     {
       "id": "d40b",
@@ -85,11 +85,46 @@
       "checked": "false"
     },
     {
-      "id": "b317",
-      "name": "ddd",
-      "price": "0222",
-      "quantity": "0225",
+      "id": "ee86",
+      "name": "heloo",
+      "price": "22",
+      "quantity": "555",
       "checked": "false"
+    },
+    {
+      "id": "9a2b",
+      "name": "heloo",
+      "price": "22",
+      "quantity": "555",
+      "checked": "false"
+    },
+    {
+      "id": "3e99",
+      "name": "KKK",
+      "price": "55",
+      "quantity": "55",
+      "checked": "false"
+    },
+    {
+      "id": "4d78",
+      "name": "dell",
+      "price": "77",
+      "quantity": "777",
+      "checked": "false"
+    },
+    {
+      "id": "f81a",
+      "name": "dell",
+      "price": "77",
+      "quantity": "777",
+      "checked": "false"
+    },
+    {
+      "id": "8920",
+      "name": "HP1",
+      "price": 555,
+      "quantity": 555,
+      "checked": true
     }
   ]
 }

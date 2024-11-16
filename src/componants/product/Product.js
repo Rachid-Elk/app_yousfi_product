@@ -43,9 +43,9 @@ const handleProductCheck=(product)=>{
 const handleProductUpdate=()=>{
 
 }
-const handleProductAdd=()=>{
+// const handleProductAdd=()=>{
 
-}
+// }
 
   return (
     <div>

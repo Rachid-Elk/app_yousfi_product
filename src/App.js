@@ -16,7 +16,7 @@ function App() {
   }, []);
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true }}>
         <nav className="nav navbar-expand sticky-top bg-body-tertiary m-2 ">
           <ul className="nav nav nav-tabs text-white mx-5">
             <li className="nav-item hover m-2">
@@ -34,7 +34,7 @@ function App() {
             <li className="nav-item hover m-2">
               <Link onClick={()=>setscurrentRoute("newproduct")} className={currentRoute==="newproduct" ?"btn btn-info px-5":"btn btn-outline-info px-5"} to={"/newproduct"}>
                 
-              <i class="fa fa-apple"></i>
+              <i className="fa fa-apple"></i>
               </Link>
             </li>
             <li className="nav-item hover m-2">
@@ -46,20 +46,21 @@ function App() {
           </ul>
         </nav>
 
-        <Routes>
-          <Route path="/home" element={<Home />}>
+        <Routes >
+          
+          <Route  path="/home" element={<Home />}>
             
           </Route>
-          <Route path="/products" element={<Products />}>
+          <Route  path="/products" element={<Products />}>
             
           </Route>
           <Route path="/products/:id" element={<Products />}>
             
           </Route>
-          <Route path="/newproduct" element={<NewProduct />}>
+          <Route  path="/newproduct" element={<NewProduct />}>
             
           </Route>
-          <Route path="/about" element={<About />}>
+          <Route  path="/about" element={<About />}>
             
           </Route>
         </Routes>
