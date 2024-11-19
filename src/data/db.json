@@ -1,129 +1,143 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Produit A",
-      "price": 50,
-      "quantity": 500,
+      "id": "HP_1",
+      "name": "HP",
+      "price": "66",
+      "quantity": "66",
       "checked": true
     },
     {
-      "id": "2",
-      "name": "Produit B",
-      "price": 150,
-      "quantity": 50,
+      "id": "DELL_1",
+      "name": "DELL",
+      "price": "666",
+      "quantity": "66",
       "checked": true
     },
     {
-      "id": "3",
-      "name": "Produit C",
-      "price": 160,
-      "quantity": 50,
+      "id": "HP_2",
+      "name": "HP",
+      "price": "66",
+      "quantity": "66",
       "checked": true
     },
     {
-      "id": "4",
-      "name": "Produit D",
-      "price": 109,
-      "quantity": 50,
-      "checked": false
-    },
-    {
-      "id": "5",
-      "name": "Produit E",
-      "price": 150,
-      "quantity": 30,
-      "checked": false
-    },
-    {
-      "id": "6",
-      "name": "Produit F",
-      "price": 130,
-      "quantity": 33,
+      "id": "HP_3",
+      "name": "HP",
+      "price": "66",
+      "quantity": "66",
       "checked": true
     },
     {
-      "id": "7",
-      "name": "Produit G",
-      "price": 110,
-      "quantity": 22,
-      "checked": false
-    },
-    {
-      "id": "d40b",
-      "name": "aa",
-      "price": 0,
-      "quantity": 0,
-      "checked": false
-    },
-    {
-      "id": "1775",
-      "name": "ddd",
-      "price": "ddddd",
-      "quantity": "",
-      "checked": "false"
-    },
-    {
-      "id": "b567",
-      "name": "ddd",
-      "price": "ddddd",
-      "quantity": "2",
-      "checked": "false"
-    },
-    {
-      "id": "64e0",
-      "name": "ddd",
-      "price": "ddddd",
-      "quantity": "2",
-      "checked": "false"
-    },
-    {
-      "id": "64dc",
-      "name": "sss",
-      "price": "0sss",
-      "quantity": 0,
-      "checked": "false"
-    },
-    {
-      "id": "ee86",
-      "name": "heloo",
-      "price": "22",
-      "quantity": "555",
-      "checked": "false"
-    },
-    {
-      "id": "9a2b",
-      "name": "heloo",
-      "price": "22",
-      "quantity": "555",
-      "checked": "false"
-    },
-    {
-      "id": "3e99",
-      "name": "KKK",
-      "price": "55",
-      "quantity": "55",
-      "checked": "false"
-    },
-    {
-      "id": "4d78",
-      "name": "dell",
+      "id": "HP_3",
+      "name": "HP",
       "price": "77",
-      "quantity": "777",
-      "checked": "false"
+      "quantity": "77",
+      "checked": true
     },
     {
-      "id": "f81a",
-      "name": "dell",
+      "id": "DELL_2",
+      "name": "DELL",
       "price": "77",
-      "quantity": "777",
-      "checked": "false"
+      "quantity": "77",
+      "checked": true
     },
     {
-      "id": "8920",
-      "name": "HP1",
-      "price": 555,
-      "quantity": 555,
+      "id": "DELL_2",
+      "name": "DELL",
+      "price": "77",
+      "quantity": "77",
+      "checked": true
+    },
+    {
+      "id": "PL_1",
+      "name": "PL",
+      "price": "77",
+      "quantity": "77",
+      "checked": true
+    },
+    {
+      "id": "PL_2",
+      "name": "PL",
+      "price": "777",
+      "quantity": "777",
+      "checked": true
+    },
+    {
+      "id": "K_1",
+      "name": "K",
+      "price": "33",
+      "quantity": "88",
+      "checked": true
+    },
+    {
+      "id": "K_2",
+      "name": "K",
+      "price": "99",
+      "quantity": "99",
+      "checked": true
+    },
+    {
+      "id": "K_3",
+      "name": "K",
+      "price": "88",
+      "quantity": "88",
+      "checked": true
+    },
+    {
+      "id": "K_4",
+      "name": "K",
+      "price": "88",
+      "quantity": "88",
+      "checked": true
+    },
+    {
+      "id": "K_5",
+      "name": "K",
+      "price": "88",
+      "quantity": "88",
+      "checked": true
+    },
+    {
+      "id": "K_6",
+      "name": "K",
+      "price": "99",
+      "quantity": "99",
+      "checked": true
+    },
+    {
+      "id": "K_7",
+      "name": "K",
+      "price": "009",
+      "quantity": "88",
+      "checked": true
+    },
+    {
+      "id": "K_8",
+      "name": "K",
+      "price": "999",
+      "quantity": "99",
+      "checked": true
+    },
+    {
+      "id": "K_9",
+      "name": "K",
+      "price": "888",
+      "quantity": "888",
+      "checked": true
+    },
+    {
+      "id": "K_10",
+      "name": "K",
+      "price": "99",
+      "quantity": "99",
+      "checked": true
+    },
+    {
+      "id": "K_11",
+      "name": "K",
+      "price": "99",
+      "quantity": "9",
       "checked": true
     }
   ]
