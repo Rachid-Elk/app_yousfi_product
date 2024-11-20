@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 
 export const productApi = axios.create({
   baseURL: "http://localhost:9000",
@@ -12,8 +13,8 @@ export const deleteProducts = (product) => {
   return productApi.delete(`/products/${product.id}`);
 };
 
-export const getProduct = (id) => {
-  return productApi.get(`/products/${id}`);
+export const getProductById = (id) => {
+  return productApi.get(`/product/${id}`);
 };
 
 export const saveProducts = (product) => {
@@ -26,4 +27,17 @@ export const checkProducts = (product) => {
 
 export const updateProduct = (product) => {
   return productApi.put(`/products/${product.id}`, product);
+};
+
+
+export const useAppState = () => {
+  const initialStat = {
+    keyword: "",
+    currentPage: 1,
+    pageSize: 4,
+    totalPages: 0,
+    products: [],
+  };
+  const appState = useState(initialStat);
+  return appState;
 };

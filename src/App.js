@@ -6,6 +6,7 @@ import Home from "./componants/home/Home";
 import NewProduct from "./componants/product/NewProduct";
 
 import { useEffect, useState } from "react";
+import EditProduct from "./componants/product/EditProduct";
 
 function App() {
   const [currentRoute, setscurrentRoute] = useState();
@@ -54,7 +55,7 @@ function App() {
           <Route  path="/products" element={<Products />}>
             
           </Route>
-          <Route path="/products/:id" element={<Products />}>
+          <Route path="/product/:id" element={<EditProduct />}>
             
           </Route>
           <Route  path="/newproduct" element={<NewProduct />}>

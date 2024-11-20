@@ -1,10 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { checkProducts, deleteProducts, getProducts } from '../../app/app';
+import { useNavigate } from 'react-router-dom';
 
 export default function Product() {
   const [products, setProducts] = useState([]);
-   
+  const navigate = useNavigate();
   useEffect(() => {
     handleGetProduct();
   }, []);
@@ -40,9 +41,8 @@ const handleProductCheck=(product)=>{
   setProducts(newProduct)
 })}
 
-const handleProductUpdate=()=>{
+  
 
-}
 // const handleProductAdd=()=>{
 
 // }
@@ -76,7 +76,7 @@ const handleProductUpdate=()=>{
               
               <td className='d-flex justify-content-around' >
                 <button className='btn btn-outline-danger ' onClick={()=>handleProductDelete(product)}> <i className="fas fa-trash " aria-hidden="true"></i> </button>
-                <button className='btn btn-outline-info ' onClick={()=>handleProductUpdate()}> <i className="fas fa-eye " aria-hidden="true"></i> </button>
+                <button className='btn btn-outline-info ' onClick={() => navigate(`/product/${product.id}`)}> <i className="fas fa-eye " aria-hidden="true"></i> </button>
                 {/* <button className='btn btn-outline-success ' onClick={()=>handleProductAdd()}> <i className="fas fa-add " aria-hidden="true"></i> </button> */}
               </td>
             </tr>))}
