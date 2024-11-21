@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getProductById, updateProduct } from "../../app/app";
+import { getProductById, updateProduct } from "../../app/app.js";
 import { useParams, useNavigate } from "react-router-dom";
 //  import { ProductsContext } from "../context/ProductsContext";
 
@@ -16,25 +16,49 @@ export default function EditProduct() {
 
   // Récupère les produits existants lors du chargement du composant
   useEffect(() => {
+    console.log(id)
     handleGetProductById(id);
   },);
 
-  const handleGetProductById = (id) => {
-    getProductById(id).then((resp) => {
+  // const handleGetProductById = (id) => {
+  //   getProductById(id).then((resp) => {
 
       
-          console.log(resp.data)
-          setName(resp.data.name);
-          setPrice(resp.data.price);
-          setQuantity(resp.data.quantity);
-          setChecked(resp.data.checked);
+  //         console.log(resp.data)
+  //         setName(resp.data.name);
+  //         setPrice(resp.data.price);
+  //         setQuantity(resp.data.quantity);
+  //         setChecked(resp.data.checked);
         
-      })
-      .catch((error) =>
-        console.error("Erreur lors de la récupération du produit :", error)
-      );
-  };
+  //     })
+  //     .catch((error) =>
+  //       console.error("Erreur lors de la récupération du produit :", error)
+  //     );
+  // };
 
+  const handleGetProductById = (id) => {
+    console.log("Fetching product with ID:", id);
+    getProductById(id)
+    .then((resp) => {
+      if (resp && resp.data) {
+        setEditingProduct({
+          name: resp.data.name,
+          price: resp.data.price,
+          quantity: resp.data.quantity,
+          checked: resp.data.checked,
+        });
+      } else {
+        console.error("Produit introuvable !");
+        navigate("/products");
+      }
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la récupération du produit :", error);
+      navigate("/products");
+    });
+  
+  };
+  
   const handleUpdateProduct = (event) => {
     event.preventDefault();
     const product = { id, name, price, quantity,checked };
@@ -58,8 +82,8 @@ export default function EditProduct() {
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="text-white p-3">
               Product :{" "}
-              <h2 className="text-danger fw-bold">{name}</h2>
             </h1>
+            <h2 className="text-danger fw-bold">{id}</h2>
           </div>
         </div>
         <div className="card-body row">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { saveProducts, getProducts } from "../../app/app";
+import { saveProducts, getProducts } from "../../app/app.js";
 
 export default function NewProduct() {
   const [newProduct, setNewProduct] = useState({

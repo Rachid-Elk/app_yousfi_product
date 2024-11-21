@@ -1,21 +1,38 @@
 
 import React, { useEffect, useState } from 'react';
-import { checkProducts, deleteProducts, getProducts } from '../../app/app';
+import { checkProducts, deleteProducts, getProducts } from '../../app/app.js';
 import { useNavigate } from 'react-router-dom';
 
 export default function Product() {
-  const [products, setProducts] = useState([]);
+  const [state, setState] = useState({
+    products:[],
+    currentPage : 1,
+    pageSize:6 ,
+    keyword:"" ,
+    totalPages : 0
+  });
   const navigate = useNavigate();
   useEffect(() => {
-    handleGetProduct();
+    handleGetProduct(state.keyword,state.currentPage,state.pageSize);
   }, []);
 
-  const handleGetProduct = () => {
-      getProducts().then(resp => {
-        const products = resp.data;
-        console.log("products : ",products);
+  const handleGetProduct = (keyword,page,size) => {
+      getProducts(keyword,page,size).then(resp => {
+         const nombreProd= state.products.length
+        // const totalElement = resp.data.total
+        console.log("total " ,nombreProd);
         
-        setProducts(products);
+        let totalPages = Math.ceil(nombreProd/size);
+        console.log("total " ,totalPages);
+        if(nombreProd % size !== 0) ++totalPages ;
+        setState({
+          ...state,
+          products:resp.data,
+          keyword:keyword,
+          currentPage:page,
+          pageSize:size,
+          totalPages:totalPages
+        });
       })
       .catch(err => {
         console.log(err);
@@ -23,14 +40,14 @@ export default function Product() {
   }
 const handleProductDelete=(product)=>{
   deleteProducts(product).then(resp=>{
-    const newProduct = products.filter((p) => p.id !== product.id)
-    setProducts(newProduct) 
+    const newProduct = state.products.filter((p) => p.id !== product.id)
+    setState({...state , products:newProduct}) 
   })
 
 }
 const handleProductCheck=(product)=>{
   checkProducts(product).then((resp) => {
-    const newProduct = products.map((p) => {
+    const newProduct = state.products.map((p) => {
       if(p.id === product.id ){
         p.checked =! p.checked
       }
@@ -38,7 +55,7 @@ const handleProductCheck=(product)=>{
       return p
       
   });
-  setProducts(newProduct)
+  setState({...state , products:newProduct}) 
 })}
 
   
@@ -64,7 +81,7 @@ const handleProductCheck=(product)=>{
             </tr>
           </thead>
           <tbody >
-          {products.map((product) => (
+          {state.products.map((product) => (
           <tr className='text-center' key={product.id} >
               <td>{product.id}</td>
               <td>{product.name}</td>
@@ -80,13 +97,29 @@ const handleProductCheck=(product)=>{
                 {/* <button className='btn btn-outline-success ' onClick={()=>handleProductAdd()}> <i className="fas fa-add " aria-hidden="true"></i> </button> */}
               </td>
             </tr>))}
-            </tbody>
-          
-        </table>
-        
-        
-        
+            </tbody>         
+        </table>    
       </div>
+      <div>
+  <div>
+    <ul>
+      {state.totalPages > 0 && 
+        Array.from({ length: state.totalPages }, (_, index) => (
+          
+          <li key={index}>
+            <button className="btn btn-success">
+              {
+              
+              index + 1
+              }
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
     </div>
   );
 }

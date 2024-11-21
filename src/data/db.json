@@ -22,20 +22,6 @@
       "checked": true
     },
     {
-      "id": "HP_3",
-      "name": "HP",
-      "price": "66",
-      "quantity": "66",
-      "checked": true
-    },
-    {
-      "id": "HP_3",
-      "name": "HP",
-      "price": "77",
-      "quantity": "77",
-      "checked": true
-    },
-    {
       "id": "DELL_2",
       "name": "DELL",
       "price": "77",
@@ -138,6 +124,20 @@
       "name": "K",
       "price": "99",
       "quantity": "9",
+      "checked": true
+    },
+    {
+      "id": "zss_1",
+      "name": "zss",
+      "price": "000",
+      "quantity": "00",
+      "checked": true
+    },
+    {
+      "id": "HP_3",
+      "name": "HP",
+      "price": "07",
+      "quantity": "77",
       "checked": true
     }
   ]

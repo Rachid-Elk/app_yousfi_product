@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductsContext } from "../context/ProductsContext";
+import { ProductsContext } from "../context/ProductsContext.js";
 
 function Stats() {
   const [appState, setAppState] = useContext(ProductsContext);
