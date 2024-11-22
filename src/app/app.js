@@ -11,6 +11,21 @@ export const getProducts = (keyword="",page=1 ,size=5) => {
   return productApi.get(`/products?name_likes=${keyword}&_pages=${page}&_limit=${size}`);
 };
 
+export const getAllProducts = async () => {
+  try {
+    // Récupère tous les produits
+    const response = await productApi.get(`/products`);
+    
+    // Calcul du nombre total de produits
+    const totalProducts = response.data.length;
+
+    return totalProducts;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des produits :", error);
+    throw error; // Relance l'erreur pour que l'appelant puisse la gérer
+  }
+};
+
 export const getProductById = (id) => {
   return productApi.get(`/products/${id}`); // Route corrigée
 };

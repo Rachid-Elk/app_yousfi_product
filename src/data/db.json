@@ -29,20 +29,6 @@
       "checked": true
     },
     {
-      "id": "DELL_2",
-      "name": "DELL",
-      "price": "77",
-      "quantity": "77",
-      "checked": true
-    },
-    {
-      "id": "PL_1",
-      "name": "PL",
-      "price": "77",
-      "quantity": "77",
-      "checked": true
-    },
-    {
       "id": "PL_2",
       "name": "PL",
       "price": "777",
@@ -138,6 +124,13 @@
       "name": "HP",
       "price": "07",
       "quantity": "77",
+      "checked": true
+    },
+    {
+      "id": "ss_1",
+      "name": "ss",
+      "price": "022222",
+      "quantity": "022",
       "checked": true
     }
   ]
