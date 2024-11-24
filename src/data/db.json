@@ -5,14 +5,14 @@
       "name": "HP",
       "price": "66",
       "quantity": "66",
-      "checked": true
+      "checked": false
     },
     {
       "id": "DELL_1",
       "name": "DELL",
       "price": "666",
       "quantity": "66",
-      "checked": true
+      "checked": false
     },
     {
       "id": "HP_2",
@@ -26,55 +26,6 @@
       "name": "DELL",
       "price": "77",
       "quantity": "77",
-      "checked": true
-    },
-    {
-      "id": "PL_2",
-      "name": "PL",
-      "price": "777",
-      "quantity": "777",
-      "checked": true
-    },
-    {
-      "id": "K_1",
-      "name": "K",
-      "price": "33",
-      "quantity": "88",
-      "checked": true
-    },
-    {
-      "id": "K_2",
-      "name": "K",
-      "price": "99",
-      "quantity": "99",
-      "checked": true
-    },
-    {
-      "id": "K_3",
-      "name": "K",
-      "price": "88",
-      "quantity": "88",
-      "checked": true
-    },
-    {
-      "id": "K_4",
-      "name": "K",
-      "price": "88",
-      "quantity": "88",
-      "checked": true
-    },
-    {
-      "id": "K_5",
-      "name": "K",
-      "price": "88",
-      "quantity": "88",
-      "checked": true
-    },
-    {
-      "id": "K_6",
-      "name": "K",
-      "price": "99",
-      "quantity": "99",
       "checked": true
     },
     {
@@ -131,6 +82,48 @@
       "name": "ss",
       "price": "022222",
       "quantity": "022",
+      "checked": true
+    },
+    {
+      "id": "ss_1",
+      "name": "ss",
+      "price": "99",
+      "quantity": "99",
+      "checked": true
+    },
+    {
+      "id": "HP_3",
+      "name": "HP",
+      "price": "00",
+      "quantity": "77",
+      "checked": true
+    },
+    {
+      "id": "OP_1",
+      "name": "OP",
+      "price": "77",
+      "quantity": "77",
+      "checked": true
+    },
+    {
+      "id": "YOU_1",
+      "name": "YOU",
+      "price": "88",
+      "quantity": "88",
+      "checked": true
+    },
+    {
+      "id": "RR_1",
+      "name": "RR",
+      "price": "55",
+      "quantity": "55",
+      "checked": true
+    },
+    {
+      "id": "PP_1",
+      "name": "PP",
+      "price": "88",
+      "quantity": "88",
       "checked": true
     }
   ]
