@@ -7,8 +7,8 @@ export const productApi = axios.create({
   baseURL: "http://localhost:9000",
 });
 
-export const getProducts = (keyword="",page=1 ,size=5) => {
-  return productApi.get(`/products?name_likes=${keyword}&_pages=${page}&_limit=${size}`);
+export const getProducts = (keyword,page ,size) => {
+  return productApi.get(`/products?name_like=${keyword}&_page=${page}&_limit=${size}`);
 };
 
 export const getAllProducts = async () => {
@@ -47,14 +47,14 @@ export const updateProduct = (product) => {
 };
 
 
-export const useAppState = () => {
-  const initialStat = {
-    keyword: "",
-    currentPage: 1,
-    pageSize: 4,
-    totalPages: 0,
-    products: [],
-  };
-  const appState = useState(initialStat);
-  return appState;
-};
+// export const useAppState = () => {
+//   const initialStat = {
+//     keyword: "",
+//     currentPage: 1,
+//     pageSize: 4,
+//     totalPages: 0,
+//     products: [],
+//   };
+//   const appState = useState(initialStat);
+  // return appState;
+// };

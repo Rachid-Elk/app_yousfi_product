@@ -15,70 +15,80 @@ export default function Product() {
     keyword: "",
     totalPages: 0,
   });
+
   const navigate = useNavigate();
+
+  // Appel initial + dépendances
   useEffect(() => {
     handleGetProduct(state.keyword, state.currentPage, state.pageSize);
-  }, []);
+  }, [state.currentPage, state.keyword, state.pageSize]);
 
   const handleGetProduct = async (keyword, page, size) => {
-    const [total, resp] = await Promise.all([
-      getAllProducts(),
-      getProducts(keyword, page, size),
-    ]);
-    const totalElement = total;
-    let totalPages = Math.ceil(totalElement / size);
-    console.log("total page ", totalPages);
-    if (totalElement % size !== 0) ++totalPages;
-    console.log({ total, resp });
+    console.log("Fetching products with:", { keyword, page, size });
+    try {
+      const [total, resp] = await Promise.all([
+        getAllProducts(), // Nombre total de produits
+        getProducts(keyword, page, size), // Produits paginés
+      ]);
 
-    setState({
-      ...state,
-      products: resp.data,
-      keyword: keyword,
-      currentPage: page,
-      pageSize: size,
-      totalPages: totalPages,
-    });
-    // .then(resp => {
-    //   //  const nombreProd= state.products.length
+      let totalPages = Math.ceil(total / size);
+      if(total%size !==0) totalPages++;
+      console.log("Total pages:", totalPages, "Products:", resp.data);
 
-    //    let totalPages = Math.ceil(total/size);
-    //    console.log("total " ,totalPages);
-    //   if(total % size !== 0) ++totalPages ;
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // });
+      setState( ({
+        ...state,
+        products: resp.data,
+        keyword:keyword,
+        currentPage: page,
+        pageSize: size,
+        totalPages,
+      }));
+    } catch (error) {
+      console.error("Erreur lors de la récupération des produits:", error);
+    }
   };
+
   const handleProductDelete = (product) => {
-    deleteProducts(product).then((resp) => {
-      const newProduct = state.products.filter((p) => p.id !== product.id);
-      setState({ ...state, products: newProduct });
+    deleteProducts(product).then(() => {
+      const updatedProducts = state.products.filter((p) => p.id !== product.id);
+      setState((prevState) => ({
+        ...prevState,
+        products: updatedProducts,
+      }));
     });
   };
-  const handleProductCheck = (product) => {
-    checkProducts(product).then((resp) => {
-      const newProduct = state.products.map((p) => {
-        if (p.id === product.id) {
-          p.checked = !p.checked;
-        }
 
+  const handleProductCheck = (product) => {
+    checkProducts(product).then(() => {
+      const updatedProducts = state.products.map((p) => {
+        if (p.id === product.id) {
+          return { ...p, checked: !p.checked };
+        }
         return p;
       });
-      setState({ ...state, products: newProduct });
+      setState((prevState) => ({
+        ...prevState,
+        products: updatedProducts,
+      }));
     });
   };
 
-  // const handleProductAdd=()=>{
-
-  // }
+  const handleGoToPage = (page) => {
+    // if (page > 0 && page <= state.totalPages) {
+    //   setState((prevState) => ({
+    //     ...prevState,
+    //     currentPage: page,
+    //   }));
+    // }
+    handleGetProduct(state.keyword,page,state.pageSize)
+  };
 
   return (
     <div>
       <div className="container mt-5">
-        <table className="table  table-hover m-3">
-          <thead className=" bg-dark text-white">
-            <tr className="text-center ">
+        <table className="table table-hover m-3">
+          <thead className="bg-dark text-white">
+            <tr className="text-center">
               <th>Id</th>
               <th>Name</th>
               <th>Price</th>
@@ -96,62 +106,72 @@ export default function Product() {
                 <td>{product.quantity}</td>
                 <td>
                   <button
-                    onClick={() => {
-                      handleProductCheck(product);
-                    }}
+                    onClick={() => handleProductCheck(product)}
                     className="btn btn-outline-success"
                   >
-                    {product.checked === true ? (
-                      <i className="fas fa-check "></i>
+                    {product.checked ? (
+                      <i className="fas fa-check"></i>
                     ) : (
-                      <i className="fas fa-dot-circle "></i>
+                      <i className="fas fa-dot-circle"></i>
                     )}
                   </button>
                 </td>
-
                 <td className="d-flex justify-content-around">
                   <button
-                    className="btn btn-outline-danger "
+                    className="btn btn-outline-danger"
                     onClick={() => handleProductDelete(product)}
                   >
-                    {" "}
-                    <i className="fas fa-trash " aria-hidden="true"></i>{" "}
+                    <i className="fas fa-trash"></i>
                   </button>
                   <button
-                    className="btn btn-outline-info "
+                    className="btn btn-outline-info"
                     onClick={() => navigate(`/product/${product.id}`)}
                   >
-                    {" "}
-                    <i className="fas fa-eye " aria-hidden="true"></i>{" "}
+                    <i className="fas fa-eye"></i>
                   </button>
-                  {/* <button className='btn btn-outline-success ' onClick={()=>handleProductAdd()}> <i className="fas fa-add " aria-hidden="true"></i> </button> */}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div className="d-flex justify-content-center align-items-center mt-3">
+        <button
+          className="btn btn-outline-secondary"
+          disabled={state.currentPage === 1}
+          onClick={() => handleGoToPage(state.currentPage - 1)}
+        >
+          Précédent
+        </button>
+
+        <ul className="pagination-list list-unstyled d-flex gap-2 mx-3">
+          {Array.from({ length: state.totalPages }, (_, index) => (
+            // {new Array(state.totalPages).fill(0).map((v,index)=>(
+            <li key={index}>
+              <button
+                className={
+                  index + 1 === state.currentPage
+                    ? "btn btn-success"
+                    : "btn btn-outline-success"
+                }
+                onClick={() => handleGoToPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          className="btn btn-outline-secondary"
+          disabled={state.currentPage === state.totalPages}
+          onClick={() => handleGoToPage(state.currentPage + 1)}
+        >
+          Suivant
+        </button>
       </div>
-      <div>
-        <div>
-          <ul className="pagination-list list-unstyled d-flex gap-2">
-            {state.totalPages > 0 &&
-              Array.from({ length: state.totalPages }, (_, index) => (
-                <li key={index}>
-                  <button
-                    className={
-                      !index ? "btn btn-success" : "btn btn-outline-success"
-                    }
-                    onClick={() => {
-                      setState({ ...state, currentPage: index++ });
-                    }}
-                  >
-                    {index + 1}
-                  </button>
-                </li>
-              ))}
-          </ul>
-        </div>
       </div>
+
+      
     </div>
   );
 }
